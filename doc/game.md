@@ -2,9 +2,9 @@
 
 - Isometric
 - Turn based
-- Stuff
+- Magic!
 
-CX moves from point A towards point B every turn. It's your job to keep it alive.
+VIP moves from point A towards point B every turn. It's your job to keep it alive.
 
 To do so you have a team of 4 characters specialized in each of their own field:
 
@@ -160,3 +160,11 @@ Attack gives 50% splash in adjecent fields, 25% in distance+1 fields.
 Each character has HP and mana visible (if any).
 
 Abilities and stats of selection is visible in bottom of screen.
+
+![alt text](field.png "Logo Title Text 1")
+
+![alt text](mainscreen.png "Logo Title Text 1")
+
+### Control
+
+Clicking a character will select it. Showing stats in bottom. If units are stacked then clicking the field again will cycle.

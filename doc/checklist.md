@@ -21,6 +21,7 @@
     - [ ] Ground
     - [ ] Abilities
     - [ ] Attack
+    - [ ] Markers
   - Characters
     - [ ] VIP
     - [ ] CA
