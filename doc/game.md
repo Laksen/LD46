@@ -167,4 +167,4 @@ Abilities and stats of selection is visible in bottom of screen.
 
 ### Control
 
-Clicking a character will select it. Showing stats in bottom. If units are stacked then clicking the field again will cycle.
+Clicking a character will select it. Showing stats in bottom. If units are stacked then clicking the field again will cycle them.

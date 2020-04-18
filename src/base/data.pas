@@ -48,7 +48,7 @@ begin
   if fRequest.readyState<>4 then exit;
 
   if (fRequest.status = 200) and (fRequest.response<>nil) then
-		fData:=GetStringLL(fRequest.response);
+		fData:=TJSArrayBuffer(fRequest.response);
 
   if assigned(fOnLoad) then fOnLoad(self, fFilename, fData);
 end;
@@ -66,7 +66,7 @@ begin
   fRequest:=TJSXMLHttpRequest.new;
 	fRequest.open('GET', fFilename);
 	fRequest.overrideMimeType(fMimetype);
-  Prepare(fRequest);
+  fRequest.responseType := 'arraybuffer';
 	fRequest.onreadystatechange:=TJSOnReadyStateChangeHandler(@HandleReady);
 	fRequest.send;
 end;

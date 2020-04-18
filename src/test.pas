@@ -13,7 +13,7 @@ program test;
 uses
   sysutils,math,
   js, Web, WebGL,
-  font, shaders, data, matrix, resources, init, gamebase, menusystem, camera;
+  font, shaders, data, matrix, resources, init, gamebase, menusystem, camera, ld46;
              
 
 type
@@ -81,7 +81,7 @@ begin
 end;
 
 begin
-  //g:=TGame123.Create;
+  {//g:=TGame123.Create;
   //g.Run;
 
   canvas:=TJSHTMLCanvasElement(document.createElement('canvas'));
@@ -106,10 +106,10 @@ begin
   gl.viewport(0, 0, canvas.width, canvas.height);
 
   AddResource('assets/ubuntu_light.fnt');
-  LoadResources(@evt, @done);
+ // LoadResources(@evt, @done);
 
   //x:=TMatrix.Perspective(45,1, 0.1,1000);
   //writeln(x.ToString);
 
-  window.requestAnimationFrame(@UpdateCanvas);
+  window.requestAnimationFrame(@UpdateCanvas);}
 end.
