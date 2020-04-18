@@ -1,15 +1,17 @@
 # Checklist
 
 - Programming
-  - [ ] Terrain
-    - [ ] FoW
+  - [x] Terrain
+    - [x] FoW
+    - [x] Clicking
+    - [ ] Drag
   - Units
     - [ ] Selection
       - [ ] Stats
     - [ ] Movement
     - [ ] Abilities
     - [ ] Attack
-  - Turn
+  - Turn mechanics
     - [ ] VIP
     - [ ] Player
       - [ ] Reveal

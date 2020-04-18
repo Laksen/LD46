@@ -25,11 +25,13 @@ type
     constructor RotationY(AAngle: double);
     constructor RotationZ(AAngle: double);
     constructor Translation(AX,AY,AZ: double);
+    constructor Scaling(AX,AY,AZ: double);
 
     function RotateX(AAngle: double): TMatrix;
     function RotateY(AAngle: double): TMatrix;
     function RotateZ(AAngle: double): TMatrix;
     function Translate(AX,AY,AZ: double): TMatrix;
+    function Scale(AX,AY,AZ: double): TMatrix;
 
     function Invert: TMatrix;
 
@@ -165,6 +167,15 @@ begin
   M[3,2]:=AZ;
 end;
 
+constructor TMatrix.Scaling(AX, AY, AZ: double);
+begin
+  Identity;
+
+  M[0,0]:=AX;
+  M[1,1]:=AY;
+  M[2,2]:=AZ;
+end;
+
 function TMatrix.RotateX(AAngle: double): TMatrix;
 begin
   result:=Multiply(TMatrix.RotationX(AAngle));
@@ -183,6 +194,11 @@ end;
 function TMatrix.Translate(AX, AY, AZ: double): TMatrix;
 begin
   result:=Multiply(TMatrix.Translation(AX, AY, AZ));
+end;
+
+function TMatrix.Scale(AX, AY, AZ: double): TMatrix;
+begin
+  result:=Multiply(TMatrix.Scaling(AX, AY, AZ));
 end;
 
 function TMatrix.Invert: TMatrix;

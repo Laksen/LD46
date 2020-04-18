@@ -74,7 +74,8 @@ begin
 end;
 
 procedure InitStop;
-begin
+begin                        
+  window.removeEventListener('resize', @Resized);
   document.body.removeChild(cnv);
 
   rc:=Nil;

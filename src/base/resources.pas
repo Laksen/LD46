@@ -6,7 +6,7 @@ interface
 
 uses
   JS,
-  Classes, Types;
+  Classes, SysUtils, Types;
 
 type
   TResourceCallback = procedure(const AResource: string; AProgress: double) of object;
@@ -15,11 +15,12 @@ type
 procedure AddResource(const AFilename: string);
 procedure LoadResources(AEventCallback: TResourceCallback; ADoneCallback: TDoneCallback);
 function GetResources(const AFilename: string): TJSArrayBuffer;
+function GetResourceString(const AFilename: string): string;
 
 implementation
 
 uses
-  data;
+  data, utils;
 
 type
   TLoadObject = class
@@ -64,8 +65,17 @@ begin
 end;
 
 function GetResources(const AFilename: string): TJSArrayBuffer;
+var
+  idx: Integer;
 begin
-  result:=TLoadObject(Resources.Objects[Resources.IndexOf(AFilename)]).Data;
+  idx:=Resources.IndexOf(AFilename);
+  if idx<0 then raise Exception.Create('"' + AFilename + '" not registered as a resource');
+  result:=TLoadObject(Resources.Objects[idx]).Data;
+end;
+
+function GetResourceString(const AFilename: string): string;
+begin
+  result:=EncodeUTF8(GetResources(AFilename));
 end;
 
 function TLoadObject.GetData: TJSArrayBuffer;

@@ -20,6 +20,7 @@ type
   private     
     canvas: TJSHTMLCanvasElement;
     fgl: TJSWebGLRenderingContext;
+    function OnClick(aEvent: TJSMouseEvent): boolean;
   private
     fTime: double;
     fState: TGameState;
@@ -27,7 +28,7 @@ type
     procedure DoneLoad;
 
     procedure InitGL;
-    function Resized: boolean;
+    function OnResized: boolean;
 
     procedure UpdateCanvas(ATime: TJSDOMHighResTimeStamp);
   protected
@@ -35,6 +36,9 @@ type
     procedure StartState(AState: TGameState); virtual;
     procedure RegisterResources; virtual;
     procedure RenderFrame; virtual;
+
+    procedure Resized; virtual;
+    procedure Click(AX,AY: double); virtual;
 
     property Time: double read fTime;
     property GL: TJSWebGLRenderingContext read fgl;
@@ -53,6 +57,12 @@ begin
   StartState(gsMenu);
 end;
 
+function TCustomGame.OnClick(aEvent: TJSMouseEvent): boolean;
+begin
+  Click(aEvent.offsetX,aEvent.offsetY);
+  result:=true;
+end;
+
 procedure TCustomGame.DoLoad(const AResource: string; AProgress: double);
 begin
   InitProgress(AProgress, 'Loaded ' + AResource);
@@ -67,7 +77,8 @@ begin
   canvas.style.setProperty('z-index','0');
   document.body.appendChild(canvas);
 
-  window.addEventListener('resize', @Resized);
+  canvas.onclick:=@OnClick;
+  window.addEventListener('resize', @OnResized);
 
   fgl:=TJSWebGLRenderingContext(canvas.getContext('webgl'));
   if fgl = nil then
@@ -77,12 +88,14 @@ begin
   end;
 end;
 
-function TCustomGame.Resized: boolean;
+function TCustomGame.OnResized: boolean;
 begin
   canvas.width:=window.innerWidth;
   canvas.height:=window.innerHeight;
 
   gl.viewport(0, 0, canvas.width, canvas.height);
+
+  Resized;
 
   result:=true;
 end;
@@ -112,6 +125,14 @@ procedure TCustomGame.RenderFrame;
 begin
 end;
 
+procedure TCustomGame.Resized;
+begin
+end;
+
+procedure TCustomGame.Click(AX, AY: double);
+begin
+end;
+
 constructor TCustomGame.Create;
 begin
   inherited Create;
@@ -138,8 +159,6 @@ begin
       end;
     gsLoad:
       begin
-        // Should not happen
-        writeln('Error');
       end;
     gsMenu,
     gsGame:

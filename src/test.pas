@@ -13,7 +13,7 @@ program test;
 uses
   sysutils,math,
   js, Web, WebGL,
-  font, shaders, data, matrix, resources, init, gamebase, menusystem, camera, ld46;
+  font, shaders, data, matrix, resources, init, gamebase, menusystem, camera, ld46, utils, imgreader;
              
 
 type
@@ -29,7 +29,7 @@ var
   loaded: boolean = false;
 
   fnt: TFont;
-  g: TGame123;
+  g: TCustomGame;
 
 procedure UpdateCanvas(time: TJSDOMHighResTimeStamp);
 var
@@ -81,6 +81,9 @@ begin
 end;
 
 begin
+  g:=TLD46.Create;
+  g.Run;
+
   {//g:=TGame123.Create;
   //g.Run;
 

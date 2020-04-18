@@ -19,8 +19,9 @@ type
     procedure RotateY(AAngle: double);
     procedure RotateZ(AAngle: double);
     procedure Translate(AX,AY,AZ: double);
+    procedure Scale(AX,AY,AZ: double);
 
-    property Projection: TMatrix read fProjection;
+    property Projection: TMatrix read fProjection write fProjection;
     property Modelview: TMatrix read fModelview;
   end;
 
@@ -65,6 +66,15 @@ var
   next: TMatrix;
 begin
   next:=fModelview.Translate(ax,ay,az);
+  fModelview.Free;
+  fModelview:=next;
+end;
+
+procedure TCamera.Scale(AX, AY, AZ: double);
+var
+  next: TMatrix;
+begin
+  next:=fModelview.Scale(ax,ay,az);
   fModelview.Free;
   fModelview:=next;
 end;
