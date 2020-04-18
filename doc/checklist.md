@@ -1,0 +1,36 @@
+# Checklist
+
+- Programming
+  - [ ] Terrain
+    - [ ] FoW
+  - Units
+    - [ ] Selection
+      - [ ] Stats
+    - [ ] Movement
+    - [ ] Abilities
+    - [ ] Attack
+  - Turn
+    - [ ] VIP
+    - [ ] Player
+      - [ ] Reveal
+      - [ ] Aggro
+    - [ ] Enemy
+  - [ ] Audio effects
+- Art
+  - Textures
+    - [ ] Ground
+    - [ ] Abilities
+    - [ ] Attack
+  - Characters
+    - [ ] VIP
+    - [ ] CA
+    - [ ] CB
+    - [ ] CC
+    - [ ] CD
+    - Enemies
+      - [ ] Tower
+      - [ ] Critter
+      - [ ] Orc
+      - [ ] Archer
+      - [ ] Mage
+      - [ ] Guardian
